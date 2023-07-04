@@ -1,15 +1,20 @@
 package com.project.springbootproject.service;
 
-import com.project.springbootproject.model.entity.User;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.project.springbootproject.model.dto.User.UserQueryRequest;
+import com.project.springbootproject.model.entity.User;
+import com.project.springbootproject.model.vo.UserVO;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
-* @author frankXu
-* @description 针对表【user(用户)】的数据库操作Service
-* @createDate 2023-06-17 21:12:21
-*/
+ * @author frankXu
+ * @description 针对表【user(用户)】的数据库操作Service
+ * @createDate 2023-06-17 21:12:21
+ */
 @SuppressWarnings("all")
 public interface UserService extends IService<User> {
     /**
@@ -56,4 +61,24 @@ public interface UserService extends IService<User> {
      */
     boolean userLogout(HttpServletRequest request);
 
+    /**
+     * 分页查询用户
+     *
+     * @param userQueryRequest
+     * @return
+     */
+    Page<UserVO> listUserVoByPage(UserQueryRequest userQueryRequest);
+
+    List<UserVO> getUserVO(List<User> userList);
+
+    QueryWrapper<User> getQueryWrapper(UserQueryRequest userQueryRequest);
+
+    UserVO getUserVO(User user);
+    /**
+     * 获取当前登录用户（允许未登录）
+     *
+     * @param request
+     * @return
+     */
+    User getLoginUserPermitNull(HttpServletRequest request);
 }
