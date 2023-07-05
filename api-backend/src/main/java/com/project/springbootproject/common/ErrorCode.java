@@ -2,7 +2,8 @@ package com.project.springbootproject.common;
 
 /**
  * 自定义错误码
- * @author 28102
+ *
+ * @author frank123.xu
  */
 @SuppressWarnings("all")
 public enum ErrorCode {

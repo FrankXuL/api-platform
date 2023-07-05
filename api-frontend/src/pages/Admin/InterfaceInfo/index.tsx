@@ -17,7 +17,6 @@ import {
 } from "@/services/api-backend/interfaceInfoController";
 import CreateModal from "@/pages/Admin/InterfaceInfo/components/CreateModal";
 import {Switch} from 'antd';
-import {PoweroffOutlined} from '@ant-design/icons';
 
 const TableList: React.FC = () => {
   /**

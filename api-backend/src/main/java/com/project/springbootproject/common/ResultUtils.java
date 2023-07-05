@@ -2,7 +2,8 @@ package com.project.springbootproject.common;
 
 /**
  * 返回工具类
- * @author 28102
+ *
+ * @author frank123.xu
  */
 @SuppressWarnings("all")
 public class ResultUtils {

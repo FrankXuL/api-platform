@@ -1,10 +1,18 @@
 package com.project.springbootproject.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.project.springbootproject.common.BaseResponse;
+import com.project.springbootproject.common.ErrorCode;
 import com.project.springbootproject.common.ResultUtils;
+import com.project.springbootproject.exception.BusinessException;
 import com.project.springbootproject.manager.SearchFacde;
+import com.project.springbootproject.model.dto.User.UserQueryRequest;
+import com.project.springbootproject.model.dto.post.PostQueryRequest;
 import com.project.springbootproject.model.dto.search.SearchRequest;
+import com.project.springbootproject.model.entity.Picture;
+import com.project.springbootproject.model.vo.PostVO;
 import com.project.springbootproject.model.vo.SearchVO;
+import com.project.springbootproject.model.vo.UserVO;
 import com.project.springbootproject.service.PictureService;
 import com.project.springbootproject.service.PostService;
 import com.project.springbootproject.service.UserService;
