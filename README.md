@@ -6,7 +6,7 @@
 
 # 项目架构
 
-![img.png](api-backend%2Fdoc%2Fimg.png)
+![img.png](api-backend/doc/img.png)
 
 ## 前端架构
 
