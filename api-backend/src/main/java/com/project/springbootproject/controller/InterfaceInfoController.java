@@ -1,6 +1,8 @@
 package com.project.springbootproject.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.apiclientsdk.client.ApiClient;
+import com.google.gson.Gson;
 import com.project.springbootproject.annotation.AuthCheck;
 import com.project.springbootproject.common.*;
 import com.project.springbootproject.exception.BusinessException;
@@ -9,14 +11,16 @@ import com.project.springbootproject.model.dto.InterfaceInfo.InterfaceInfoInvoke
 import com.project.springbootproject.model.dto.InterfaceInfo.InterfaceInfoQueryRequest;
 import com.project.springbootproject.model.dto.InterfaceInfo.InterfaceInfoUpdateRequest;
 import com.project.springbootproject.model.entity.InterfaceInfo;
+import com.project.springbootproject.model.entity.User;
 import com.project.springbootproject.model.enums.InterfaceInfoStatusEnum;
 import com.project.springbootproject.service.InterfaceInfoService;
-
+import com.project.springbootproject.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Type;
 import java.util.List;
 
 /**
@@ -29,6 +33,9 @@ import java.util.List;
 public class InterfaceInfoController {
     @Resource
     private InterfaceInfoService interfaceInfoService;
+
+    @Resource
+    private UserService userService;
 
 
     /**
@@ -185,14 +192,14 @@ public class InterfaceInfoController {
         if (oldInterfaceInfo.getStatus() == InterfaceInfoStatusEnum.OFFLINE.getValue()) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "接口已关闭");
         }
-//        User loginUser = userService.getLoginUser(request);
-//        String accessKey = loginUser.getAccessKey();
-//        String secretKey = loginUser.getSecretKey();
-//        YuApiClient tempClient = new YuApiClient(accessKey, secretKey);
-//        Gson gson = new Gson();
-//        com.yupi.yuapiclientsdk.model.User user = gson.fromJson(userRequestParams, com.yupi.yuapiclientsdk.model.User.class);
-//        String usernameByPost = tempClient.getUsernameByPost(user);
-        return ResultUtils.success("ok");
+        User loginUser = userService.getLoginUser(request);
+        String accessKey = loginUser.getAccessKey();
+        String secretKey = loginUser.getSecretKey();
+        ApiClient tempClient = new ApiClient(accessKey,secretKey);
+        Gson gson = new Gson();
+        com.example.apiclientsdk.model.User user = gson.fromJson(userRequestParams, (Type) User.class);
+        String usernameByPost = tempClient.getUsernameByPost(user);
+        return ResultUtils.success(usernameByPost);
     }
 
 }

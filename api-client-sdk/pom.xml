@@ -11,8 +11,8 @@
     <groupId>com.example</groupId>
     <artifactId>api-client-sdk</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>api-client-Sdk</name>
-    <description>api-client-Sdk</description>
+    <name>api-client-sdk</name>
+    <description>api-client-sdk</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -21,7 +21,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>

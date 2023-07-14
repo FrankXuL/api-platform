@@ -1,5 +1,8 @@
 package com.example.apiclientsdk.utils;
 
+import cn.hutool.crypto.digest.DigestAlgorithm;
+import cn.hutool.crypto.digest.Digester;
+
 /**
  * 签名工具
  *
