@@ -3,7 +3,7 @@ package com.project.springbootproject.aop;
 import com.project.springbootproject.annotation.AuthCheck;
 import com.project.springbootproject.common.ErrorCode;
 import com.project.springbootproject.exception.BusinessException;
-import com.project.springbootproject.model.entity.User;
+import com.example.interfacecommon.model.entity.User;
 import com.project.springbootproject.model.enums.UserRoleEnum;
 
 import javax.annotation.Resource;

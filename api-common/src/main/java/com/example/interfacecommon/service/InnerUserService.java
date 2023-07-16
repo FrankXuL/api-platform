@@ -4,7 +4,7 @@ package com.example.interfacecommon.service;
 import com.example.interfacecommon.model.entity.User;
 
 /**
- * 内部用户服务1
+ * 内部用户服务
  * @author frank.xu
  * @createDate 2023-02-08 22:01:50
  */

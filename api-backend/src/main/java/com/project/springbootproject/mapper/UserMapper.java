@@ -1,6 +1,6 @@
 package com.project.springbootproject.mapper;
 
-import com.project.springbootproject.model.entity.User;
+import com.example.interfacecommon.model.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.context.annotation.Configuration;

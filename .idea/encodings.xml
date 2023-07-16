@@ -4,11 +4,11 @@
     <file url="file://$PROJECT_DIR$/api-backend/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/api-backend/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/api-client-sdk/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/api-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/api-common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/api-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/api-interface/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/api-interface/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/interface-common/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/interface-common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/interface-common1/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/interface-common1/src/main/resources" charset="UTF-8" />
   </component>

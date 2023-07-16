@@ -10,9 +10,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.frankXu</groupId>
-    <artifactId>api_backend</artifactId>
+    <artifactId>api-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>api_backend</name>
+    <name>api-backend</name>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -30,6 +30,11 @@
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>api-client-sdk</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>api-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>

@@ -6,7 +6,7 @@ import com.project.springbootproject.common.ErrorCode;
 import com.project.springbootproject.common.ResultUtils;
 import com.project.springbootproject.exception.BusinessException;
 import com.project.springbootproject.model.dto.postthumb.PostThumbAddRequest;
-import com.project.springbootproject.model.entity.User;
+import com.example.interfacecommon.model.entity.User;
 import com.project.springbootproject.service.PostThumbService;
 import com.project.springbootproject.service.UserService;
 import lombok.extern.slf4j.Slf4j;

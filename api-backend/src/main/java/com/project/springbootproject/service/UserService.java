@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.project.springbootproject.model.dto.User.UserQueryRequest;
-import com.project.springbootproject.model.entity.User;
+import com.example.interfacecommon.model.entity.User;
 import com.project.springbootproject.model.vo.UserVO;
 
 import javax.servlet.http.HttpServletRequest;

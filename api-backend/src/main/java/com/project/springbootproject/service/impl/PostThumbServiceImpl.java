@@ -7,7 +7,7 @@ import com.project.springbootproject.exception.BusinessException;
 import com.project.springbootproject.mapper.PostThumbMapper;
 import com.project.springbootproject.model.entity.Post;
 import com.project.springbootproject.model.entity.PostThumb;
-import com.project.springbootproject.model.entity.User;
+import com.example.interfacecommon.model.entity.User;
 import com.project.springbootproject.service.PostService;
 import com.project.springbootproject.service.PostThumbService;
 import org.springframework.aop.framework.AopContext;

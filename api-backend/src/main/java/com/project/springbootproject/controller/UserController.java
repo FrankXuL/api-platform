@@ -9,7 +9,7 @@ import com.project.springbootproject.common.ErrorCode;
 import com.project.springbootproject.common.ResultUtils;
 import com.project.springbootproject.exception.BusinessException;
 import com.project.springbootproject.model.dto.User.*;
-import com.project.springbootproject.model.entity.User;
+import com.example.interfacecommon.model.entity.User;
 import com.project.springbootproject.model.vo.UserVO;
 import com.project.springbootproject.service.UserService;
 import org.apache.commons.lang3.StringUtils;

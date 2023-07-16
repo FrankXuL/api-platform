@@ -10,7 +10,7 @@ import com.project.springbootproject.model.dto.post.PostQueryRequest;
 import com.project.springbootproject.model.dto.postfavour.PostFavourAddRequest;
 import com.project.springbootproject.model.dto.postfavour.PostFavourQueryRequest;
 import com.project.springbootproject.model.entity.Post;
-import com.project.springbootproject.model.entity.User;
+import com.example.interfacecommon.model.entity.User;
 import com.project.springbootproject.model.vo.PostVO;
 import com.project.springbootproject.service.PostFavourService;
 import com.project.springbootproject.service.PostService;

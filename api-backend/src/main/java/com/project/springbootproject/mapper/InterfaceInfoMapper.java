@@ -1,7 +1,7 @@
 package com.project.springbootproject.mapper;
 
-import com.project.springbootproject.model.entity.InterfaceInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.interfacecommon.model.entity.InterfaceInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

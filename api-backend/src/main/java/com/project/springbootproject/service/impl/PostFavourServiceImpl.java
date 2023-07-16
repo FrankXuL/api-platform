@@ -10,7 +10,7 @@ import com.project.springbootproject.exception.BusinessException;
 import com.project.springbootproject.mapper.PostFavourMapper;
 import com.project.springbootproject.model.entity.Post;
 import com.project.springbootproject.model.entity.PostFavour;
-import com.project.springbootproject.model.entity.User;
+import com.example.interfacecommon.model.entity.User;
 import com.project.springbootproject.service.PostFavourService;
 import com.project.springbootproject.service.PostService;
 import org.springframework.aop.framework.AopContext;

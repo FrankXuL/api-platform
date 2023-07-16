@@ -10,8 +10,7 @@ import com.project.springbootproject.model.dto.InterfaceInfo.InterfaceInfoAddReq
 import com.project.springbootproject.model.dto.InterfaceInfo.InterfaceInfoInvokeRequest;
 import com.project.springbootproject.model.dto.InterfaceInfo.InterfaceInfoQueryRequest;
 import com.project.springbootproject.model.dto.InterfaceInfo.InterfaceInfoUpdateRequest;
-import com.project.springbootproject.model.entity.InterfaceInfo;
-import com.project.springbootproject.model.entity.User;
+import com.example.interfacecommon.model.entity.User;
 import com.project.springbootproject.model.enums.InterfaceInfoStatusEnum;
 import com.project.springbootproject.service.InterfaceInfoService;
 import com.project.springbootproject.service.UserService;

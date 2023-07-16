@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.project.springbootproject.model.entity.Post;
 import com.project.springbootproject.model.entity.PostFavour;
-import com.project.springbootproject.model.entity.User;
+import com.example.interfacecommon.model.entity.User;
 
 /**
  * 帖子收藏服务

@@ -11,7 +11,7 @@ import com.project.springbootproject.constant.CommonConstant;
 import com.project.springbootproject.exception.BusinessException;
 import com.project.springbootproject.mapper.UserMapper;
 import com.project.springbootproject.model.dto.User.UserQueryRequest;
-import com.project.springbootproject.model.entity.User;
+import com.example.interfacecommon.model.entity.User;
 import com.project.springbootproject.model.vo.UserVO;
 import com.project.springbootproject.service.UserService;
 import com.project.springbootproject.utils.SqlUtils;

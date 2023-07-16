@@ -1,6 +1,13 @@
 package com.example.apigateway;
 
+import com.example.apiclientsdk.utils.SignUtils;
+import com.example.interfacecommon.model.entity.InterfaceInfo;
+import com.example.interfacecommon.model.entity.User;
+import com.example.interfacecommon.service.InnerInterfaceInfoService;
+import com.example.interfacecommon.service.InnerUserInterfaceInfoService;
+import com.example.interfacecommon.service.InnerUserService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.reactivestreams.Publisher;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -19,7 +26,10 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * @author frank.xu
@@ -29,6 +39,14 @@ import java.util.*;
 @Component
 @SuppressWarnings("all")
 public class CustomGlobalFitter implements GlobalFilter, Ordered {
+    @DubboReference
+    private InnerUserService innerUserService;
+
+    @DubboReference
+    private InnerInterfaceInfoService innerInterfaceInfoService;
+
+    @DubboReference
+    private InnerUserInterfaceInfoService innerUserInterfaceInfoService;
 
     private static final String INTERFACE_HOST = "http://localhost:8123";
     private static final List<String> IP_WHITE_LIST = Collections.singletonList("127.0.0.1");
@@ -56,8 +74,7 @@ public class CustomGlobalFitter implements GlobalFilter, Ordered {
         ServerHttpResponse response = exchange.getResponse();
         // 2. 访问控制 - 黑白名单
         if (!IP_WHITE_LIST.contains(sourceAddress)) {
-            response.setStatusCode(HttpStatus.FORBIDDEN);
-            return response.setComplete();
+            return handleNoAuth(response);
         }
         // 3. 用户鉴权（判断 ak、sk 是否合法）
         HttpHeaders headers = request.getHeaders();
@@ -66,18 +83,43 @@ public class CustomGlobalFitter implements GlobalFilter, Ordered {
         String timestamp = headers.getFirst("timestamp");
         String sign = headers.getFirst("sign");
         String body = headers.getFirst("body");
-        //
+        User invokeUser = null;
+        try {
+            invokeUser = innerUserService.getInvokeUser(accessKey);
+        } catch (Exception e) {
+            log.error("getInvokeUser error", e);
+        }
+        if (invokeUser == null) {
+            return handleNoAuth(response);
+        }
         if (Long.parseLong(nonce) > 10000L) {
             return handleNoAuth(response);
         }
-        // 时间和当前时间不能超过 5 分钟
+        // 4.时间和当前时间不能超过 5 分钟
         Long currentTime = System.currentTimeMillis() / 1000;
         final Long FIVE_MINUTES = 60 * 5L;
         if ((currentTime - Long.parseLong(timestamp)) >= FIVE_MINUTES) {
             return handleNoAuth(response);
         }
-        //return handleResponse(exchange, chain, interfaceInfo.getId(), invokeUser.getId());
-        return chain.filter(exchange);
+        // 实际情况中是从数据库中查出 secretKey
+        String secretKey = invokeUser.getSecretKey();
+        String serverSign = SignUtils.genSign(body, secretKey);
+        if (sign == null || !sign.equals(serverSign)) {
+            return handleNoAuth(response);
+        }
+        // 5. 请求的模拟接口是否存在，以及请求方法是否匹配
+        InterfaceInfo interfaceInfo = null;
+        try {
+            interfaceInfo = innerInterfaceInfoService.getInterfaceInfo(path, method);
+        } catch (Exception e) {
+            log.error("getInterfaceInfo error", e);
+        }
+        if (interfaceInfo == null) {
+            return handleNoAuth(response);
+        }
+        // todo 是否还有调用次数
+        // 6. 请求转发，调用模拟接口 + 响应日志
+        return handleResponse(exchange, chain, interfaceInfo.getId(), invokeUser.getId());
     }
 
     @Override
@@ -85,11 +127,23 @@ public class CustomGlobalFitter implements GlobalFilter, Ordered {
         return -1;
     }
 
+    /**
+     * 返回403 拒绝请求状态码
+     *
+     * @param response
+     * @return
+     */
     public Mono<Void> handleNoAuth(ServerHttpResponse response) {
         response.setStatusCode(HttpStatus.FORBIDDEN);
         return response.setComplete();
     }
 
+    /**
+     * 返回 500 服务器异常状态码
+     *
+     * @param response
+     * @return
+     */
     public Mono<Void> handleInvokeError(ServerHttpResponse response) {
         response.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);
         return response.setComplete();
@@ -107,7 +161,7 @@ public class CustomGlobalFitter implements GlobalFilter, Ordered {
             ServerHttpResponse originalResponse = exchange.getResponse();
             // 缓存数据的工厂
             DataBufferFactory bufferFactory = originalResponse.bufferFactory();
-            // 拿到响应码
+            // 拿到响应码a
             HttpStatus statusCode = originalResponse.getStatusCode();
             if (statusCode == HttpStatus.OK) {
                 // 装饰，增强能力
@@ -124,7 +178,7 @@ public class CustomGlobalFitter implements GlobalFilter, Ordered {
                                     fluxBody.map(dataBuffer -> {
                                         // 7. 调用成功，接口调用次数 + 1 invokeCount
                                         try {
-                                            //innerUserInterfaceInfoService.invokeCount(interfaceInfoId, userId);
+                                            innerUserInterfaceInfoService.invokeCount(interfaceInfoId, userId);
                                         } catch (Exception e) {
                                             log.error("invokeCount error", e);
                                         }

@@ -2,8 +2,8 @@ package com.project.springbootproject.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.interfacecommon.model.entity.InterfaceInfo;
 import com.project.springbootproject.common.PageRequest;
-import com.project.springbootproject.model.entity.InterfaceInfo;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

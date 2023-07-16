@@ -8,7 +8,7 @@ import com.project.springbootproject.constant.FileConstant;
 import com.project.springbootproject.exception.BusinessException;
 import com.project.springbootproject.manager.CosManager;
 import com.project.springbootproject.model.dto.file.UploadFileRequest;
-import com.project.springbootproject.model.entity.User;
+import com.example.interfacecommon.model.entity.User;
 import com.project.springbootproject.model.enums.FileUploadBizEnum;
 import com.project.springbootproject.service.UserService;
 import lombok.extern.slf4j.Slf4j;

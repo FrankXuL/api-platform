@@ -3,7 +3,7 @@ package com.project.springbootproject.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.project.springbootproject.model.entity.PostThumb;
-import com.project.springbootproject.model.entity.User;
+import com.example.interfacecommon.model.entity.User;
 
 /**
  * 帖子点赞服务

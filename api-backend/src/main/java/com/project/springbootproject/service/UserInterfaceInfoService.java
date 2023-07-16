@@ -1,6 +1,6 @@
 package com.project.springbootproject.service;
 
-import com.project.springbootproject.model.entity.UserInterfaceInfo;
+import com.example.interfacecommon.model.entity.UserInterfaceInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

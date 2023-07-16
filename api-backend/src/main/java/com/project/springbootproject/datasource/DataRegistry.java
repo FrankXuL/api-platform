@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author frank.xu
@@ -30,6 +31,10 @@ public class DataRegistry {
             put(SearchTypeEnum.USER.getValue(), userDataSource);
             put(SearchTypeEnum.PICTURE.getValue(), pictureDataSource);
         }};
+    }
+
+    public Set<String> getAllType() {
+        return dataSourceMap.keySet();
     }
 
     public DataSource<T> getDataSourceByType(String type) {

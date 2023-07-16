@@ -15,7 +15,7 @@ import com.project.springbootproject.model.dto.post.PostEditRequest;
 import com.project.springbootproject.model.dto.post.PostQueryRequest;
 import com.project.springbootproject.model.dto.post.PostUpdateRequest;
 import com.project.springbootproject.model.entity.Post;
-import com.project.springbootproject.model.entity.User;
+import com.example.interfacecommon.model.entity.User;
 import com.project.springbootproject.model.vo.PostVO;
 import com.project.springbootproject.service.PostService;
 import com.project.springbootproject.service.UserService;
