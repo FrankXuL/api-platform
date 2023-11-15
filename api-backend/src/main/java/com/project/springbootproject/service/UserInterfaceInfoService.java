@@ -1,7 +1,7 @@
 package com.project.springbootproject.service;
 
-import com.example.interfacecommon.model.entity.UserInterfaceInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.interfacecommon.model.entity.UserInterfaceInfo;
 
 /**
  * @author frankXu
@@ -15,7 +15,7 @@ public interface UserInterfaceInfoService extends IService<UserInterfaceInfo> {
      * @param userInterfaceInfo
      * @param add
      */
-    public void validUserInterfaceInfo(UserInterfaceInfo userInterfaceInfo, boolean add);
+    void validUserInterfaceInfo(UserInterfaceInfo userInterfaceInfo, boolean add);
 
     /**
      * 调用次数
@@ -24,5 +24,5 @@ public interface UserInterfaceInfoService extends IService<UserInterfaceInfo> {
      * @param userId
      * @return
      */
-    public boolean invokeCount(long interfaceInfoId, long userId);
+    boolean invokeCount(long interfaceInfoId, long userId);
 }

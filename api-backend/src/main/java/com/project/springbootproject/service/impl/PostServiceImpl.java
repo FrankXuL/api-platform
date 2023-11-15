@@ -52,8 +52,6 @@ import java.util.stream.Collectors;
 @Slf4j
 public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements PostService {
 
-    private final static Gson GSON = new Gson();
-
     @Resource
     private UserService userService;
 

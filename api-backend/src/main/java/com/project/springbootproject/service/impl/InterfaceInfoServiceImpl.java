@@ -33,6 +33,11 @@ public class InterfaceInfoServiceImpl extends ServiceImpl<InterfaceInfoMapper, I
     @Resource
     UserService userService;
 
+    /**
+     * 非法参数校验
+     * @param interfaceInfo
+     * @param add
+     */
     @Override
     public void validInterfaceInfo(InterfaceInfo interfaceInfo, boolean add) {
         if (interfaceInfo == null) {
